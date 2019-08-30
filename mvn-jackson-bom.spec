@@ -4,11 +4,15 @@
 #
 Name     : mvn-jackson-bom
 Version  : 2.9.5
-Release  : 1
+Release  : 2
 URL      : https://github.com/FasterXML/jackson-bom/archive/jackson-bom-2.9.5.tar.gz
 Source0  : https://github.com/FasterXML/jackson-bom/archive/jackson-bom-2.9.5.tar.gz
-Source1  : https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-base/2.9.5/jackson-base-2.9.5.pom
-Source2  : https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-bom/2.9.5/jackson-bom-2.9.5.pom
+Source1  : https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-base/2.9.4/jackson-base-2.9.4.pom
+Source2  : https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-base/2.9.5/jackson-base-2.9.5.pom
+Source3  : https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-base/2.9.7/jackson-base-2.9.7.pom
+Source4  : https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-bom/2.9.4/jackson-bom-2.9.4.pom
+Source5  : https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-bom/2.9.5/jackson-bom-2.9.5.pom
+Source6  : https://repo1.maven.org/maven2/com/fasterxml/jackson/jackson-bom/2.9.7/jackson-bom-2.9.7.pom
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : Apache-2.0
@@ -30,15 +34,28 @@ data components for the mvn-jackson-bom package.
 
 
 %prep
+%setup -q -n jackson-bom-jackson-bom-2.9.5
 
 %build
 
 %install
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.4
+cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.4/jackson-base-2.9.4.pom
+
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.5
-cp %{SOURCE1} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.5/jackson-base-2.9.5.pom
+cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.5/jackson-base-2.9.5.pom
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.7
+cp %{SOURCE3} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.7/jackson-base-2.9.7.pom
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.4
+cp %{SOURCE4} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.4/jackson-bom-2.9.4.pom
 
 mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.5
-cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.5/jackson-bom-2.9.5.pom
+cp %{SOURCE5} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.5/jackson-bom-2.9.5.pom
+
+mkdir -p %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.7
+cp %{SOURCE6} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.7/jackson-bom-2.9.7.pom
 
 
 %files
@@ -46,5 +63,9 @@ cp %{SOURCE2} %{buildroot}/usr/share/java/.m2/repository/com/fasterxml/jackson/j
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.4/jackson-base-2.9.4.pom
 /usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.5/jackson-base-2.9.5.pom
+/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-base/2.9.7/jackson-base-2.9.7.pom
+/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.4/jackson-bom-2.9.4.pom
 /usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.5/jackson-bom-2.9.5.pom
+/usr/share/java/.m2/repository/com/fasterxml/jackson/jackson-bom/2.9.7/jackson-bom-2.9.7.pom
